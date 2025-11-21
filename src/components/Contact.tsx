@@ -8,8 +8,8 @@ export default function Contact() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const phoneNumber = "01204486263";
-  const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent('مرحباً، أريد الاستفسار عن خدماتكم')}`;
+  const phoneNumber = "201204486263";
+  const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent('مرحباً، أريد الاستفسار عن خدمات Alshbh')}`;
 
   return (
     <section id="contact" ref={ref} className="relative py-32 px-6">
@@ -25,34 +25,61 @@ export default function Contact() {
           </h2>
           
           <div className="glass rounded-3xl p-12 relative overflow-hidden">
-            {/* Portal effect background */}
+            {/* Energy portal background */}
             <motion.div
               animate={{
-                scale: [1, 1.2, 1],
-                rotate: [0, 180, 360],
+                scale: [1, 1.3, 1],
+                rotate: [0, 360],
               }}
               transition={{
-                duration: 10,
+                duration: 15,
                 repeat: Infinity,
                 ease: "linear"
               }}
-              className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 opacity-30 blur-3xl"
+              className="absolute inset-0 bg-gradient-to-br from-[#00ff88]/30 via-secondary/20 to-accent/20 opacity-40 blur-3xl"
+            />
+            
+            {/* Rotating rings */}
+            <motion.div
+              animate={{
+                rotate: [0, -360],
+              }}
+              transition={{
+                duration: 20,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+              className="absolute inset-0 border-2 border-[#00ff88]/30 rounded-full blur-sm"
+            />
+            
+            <motion.div
+              animate={{
+                rotate: [0, 360],
+              }}
+              transition={{
+                duration: 25,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+              className="absolute inset-[10%] border-2 border-secondary/30 rounded-full blur-sm"
             />
 
             <div className="relative z-10">
               <motion.div
                 animate={{
-                  y: [0, -10, 0],
+                  y: [0, -15, 0],
+                  rotateY: [0, 180, 360],
                 }}
                 transition={{
-                  duration: 2,
+                  duration: 3,
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
                 className="mb-8"
               >
-                <div className="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center pulse-glow">
-                  <MessageCircle className="w-12 h-12 text-white" />
+                <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-[#00ff88] via-primary to-secondary flex items-center justify-center pulse-glow relative">
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#00ff88]/50 to-transparent animate-ping" />
+                  <MessageCircle className="w-16 h-16 text-white relative z-10" />
                 </div>
               </motion.div>
 
@@ -76,12 +103,28 @@ export default function Contact() {
               </div>
 
               <motion.div
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
+                className="relative"
               >
+                <motion.div
+                  animate={{
+                    boxShadow: [
+                      '0 0 20px #25D366, 0 0 40px #25D366',
+                      '0 0 30px #25D366, 0 0 60px #25D366',
+                      '0 0 20px #25D366, 0 0 40px #25D366',
+                    ],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                  }}
+                  className="absolute inset-0 rounded-xl blur-xl opacity-60"
+                  style={{ background: '#25D366' }}
+                />
                 <Button
                   size="lg"
-                  className="bg-[#25D366] hover:bg-[#25D366]/90 text-white px-8 py-6 text-xl rounded-xl pulse-glow group"
+                  className="relative bg-[#25D366] hover:bg-[#25D366]/90 text-white px-8 py-6 text-xl rounded-xl pulse-glow group border-2 border-[#25D366]/50"
                   asChild
                 >
                   <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
