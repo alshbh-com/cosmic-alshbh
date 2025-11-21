@@ -57,6 +57,16 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        space: {
+          purple: "hsl(var(--space-purple))",
+          cyan: "hsl(var(--space-cyan))",
+          pink: "hsl(var(--space-pink))",
+          blue: "hsl(var(--space-blue))",
+        },
+      },
+      backgroundImage: {
+        'cosmic-gradient': 'linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 50%, hsl(var(--accent)) 100%)',
+        'space-gradient': 'linear-gradient(180deg, hsl(var(--background)) 0%, hsl(245 45% 8%) 100%)',
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -84,6 +94,9 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "float": "cosmic-float 6s ease-in-out infinite",
+        "glow": "pulse-glow 2s ease-in-out infinite",
+        "particles": "float-particles 15s linear infinite",
       },
     },
   },
