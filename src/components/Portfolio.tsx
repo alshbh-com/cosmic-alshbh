@@ -64,7 +64,25 @@ export default function Portfolio() {
               onHoverEnd={() => setHoveredIndex(null)}
               className="relative group"
             >
-              <div className="glass rounded-3xl p-8 md:p-12 transition-all duration-500 hover:scale-105">
+              <div className="glass rounded-3xl p-8 md:p-12 transition-all duration-500 hover:scale-105 border-2 border-[#00ff88]/20 relative">
+                {/* Energy lines connecting effect */}
+                {hoveredIndex === index && (
+                  <>
+                    <motion.div
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ duration: 1, repeat: Infinity }}
+                      className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#00ff88] to-transparent"
+                    />
+                    <motion.div
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ duration: 1, delay: 0.2, repeat: Infinity }}
+                      className="absolute bottom-0 right-0 w-full h-1 bg-gradient-to-r from-transparent via-secondary to-transparent"
+                    />
+                  </>
+                )}
+                
                 <motion.div
                   animate={{
                     scale: hoveredIndex === index ? 1.05 : 1,
@@ -72,14 +90,32 @@ export default function Portfolio() {
                   transition={{ duration: 0.3 }}
                   className="relative z-10"
                 >
-                  <div className={`w-full h-48 rounded-2xl bg-gradient-to-br ${project.gradient} mb-6 flex items-center justify-center relative overflow-hidden`}>
+                  <div className={`w-full h-48 rounded-2xl bg-gradient-to-br ${project.gradient} mb-6 flex items-center justify-center relative overflow-hidden border border-white/10`}>
+                    {/* Holographic grid */}
                     <motion.div
                       animate={{
                         rotate: hoveredIndex === index ? 360 : 0,
+                        opacity: hoveredIndex === index ? 1 : 0.5,
                       }}
                       transition={{ duration: 2, ease: "linear" }}
-                      className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:20px_20px]"
+                      className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,255,136,0.2)_1px,transparent_1px)] bg-[length:20px_20px]"
                     />
+                    
+                    {/* Scanning line effect */}
+                    {hoveredIndex === index && (
+                      <motion.div
+                        animate={{
+                          y: [-200, 200],
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          ease: "linear"
+                        }}
+                        className="absolute inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#00ff88] to-transparent"
+                      />
+                    )}
+                    
                     <span className="text-6xl font-bold text-white/20 relative z-10">
                       {project.name.charAt(0)}
                     </span>

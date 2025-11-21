@@ -25,9 +25,35 @@ export default function Hero() {
             <Rocket className="w-16 h-16 mx-auto text-primary" />
           </motion.div>
           
-          <h1 className="text-6xl md:text-8xl font-bold mb-6 neon-text">
-            Alshbh
-          </h1>
+          <motion.h1 
+            className="text-6xl md:text-8xl font-bold mb-6 neon-text relative"
+            animate={{
+              textShadow: [
+                '0 0 20px #00ff88, 0 0 40px #00ff88, 0 0 60px #00ff88',
+                '0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88',
+                '0 0 20px #00ff88, 0 0 40px #00ff88, 0 0 60px #00ff88',
+              ],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          >
+            <motion.span
+              animate={{
+                opacity: [1, 0.8, 1, 0.9, 1],
+                x: [0, -2, 2, -1, 0],
+              }}
+              transition={{
+                duration: 0.3,
+                repeat: Infinity,
+                repeatDelay: 5,
+              }}
+            >
+              𝘼𝙇𝙎𝙃𝘽𝙃
+            </motion.span>
+          </motion.h1>
           
           <motion.p 
             className="text-3xl md:text-4xl font-light mb-4 neon-text-purple"

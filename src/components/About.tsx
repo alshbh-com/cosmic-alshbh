@@ -37,12 +37,90 @@ export default function About() {
           <h2 className="text-5xl md:text-6xl font-bold mb-6 neon-text-purple">
             من نحن؟
           </h2>
-          <div className="glass rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
-            <p className="text-xl md:text-2xl text-foreground leading-relaxed">
-              نحن فريق <span className="neon-text-pink font-bold">Alshbh</span>، نبني مواقع وتطبيقات خارج حدود العادي…
-              <br />
-              ندمج <span className="text-primary">التصميم</span>، <span className="text-secondary">الذكاء</span>، و<span className="text-accent">التحريك</span> لصناعة تجارب رقمية فضائية
-            </p>
+          
+          <div className="glass rounded-3xl p-12 mb-12 relative overflow-hidden border-2 border-[#00ff88]/30">
+            <motion.div
+              animate={{
+                rotate: [0, 360],
+                scale: [1, 1.2, 1],
+              }}
+              transition={{
+                duration: 20,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+              className="absolute inset-0 bg-gradient-to-br from-[#00ff88]/20 via-primary/10 to-secondary/20 blur-3xl"
+            />
+            
+            {/* Holographic grid effect */}
+            <div className="absolute inset-0 opacity-10" 
+                 style={{
+                   backgroundImage: 'linear-gradient(#00ff88 1px, transparent 1px), linear-gradient(90deg, #00ff88 1px, transparent 1px)',
+                   backgroundSize: '50px 50px'
+                 }}
+            />
+            
+            <div className="relative z-10">
+              <motion.div
+                className="mb-8"
+                animate={{
+                  opacity: [0.8, 1, 0.8],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <h3 className="text-4xl md:text-5xl font-bold mb-6 text-center">
+                  <span className="bg-gradient-to-r from-[#00ff88] via-primary to-secondary bg-clip-text text-transparent">
+                    شركة الشبح للبرمجة
+                  </span>
+                </h3>
+              </motion.div>
+              
+              <motion.div
+                animate={{
+                  scale: [1, 1.02, 1],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="text-2xl md:text-3xl font-light leading-relaxed mb-8 text-center"
+              >
+                <motion.span 
+                  className="text-[#00ff88]"
+                  animate={{
+                    textShadow: [
+                      '0 0 10px #00ff88',
+                      '0 0 20px #00ff88',
+                      '0 0 10px #00ff88',
+                    ],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                  }}
+                >
+                  نحن فريق Alshbh
+                </motion.span>
+                {' '}
+                <span className="text-foreground">
+                  - شركة الشبح للبرمجة، نبني مواقع وتطبيقات خارج حدود العادي... ندمج التصميم، الذكاء الاصطناعي، والتحريك لصناعة تجارب رقمية فضائية فريدة من نوعها
+                </span>
+              </motion.div>
+              
+              <motion.p
+                className="text-lg md:text-xl text-muted-foreground text-center"
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ delay: 0.5 }}
+              >
+                نحول أفكارك إلى واقع رقمي يتجاوز الخيال 🚀
+              </motion.p>
+            </div>
           </div>
         </motion.div>
 

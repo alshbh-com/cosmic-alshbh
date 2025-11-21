@@ -81,22 +81,65 @@ export default function Services() {
               onHoverStart={() => setHoveredIndex(index)}
               onHoverEnd={() => setHoveredIndex(null)}
               className={cn(
-                "relative glass rounded-2xl p-8 cursor-pointer transition-all duration-500",
-                hoveredIndex === index ? "scale-110 z-10" : "scale-100"
+                "relative glass rounded-2xl p-8 cursor-pointer transition-all duration-500 border-2",
+                hoveredIndex === index ? "scale-110 z-10 border-[#00ff88]/50" : "scale-100 border-transparent"
               )}
             >
+              {/* Orbital ring effect */}
+              {hoveredIndex === index && (
+                <>
+                  <motion.div
+                    animate={{
+                      rotate: [0, 360],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                    className="absolute inset-[-2px] rounded-2xl border-2 border-[#00ff88]/30"
+                  />
+                  <motion.div
+                    animate={{
+                      rotate: [360, 0],
+                    }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                    className="absolute inset-[-6px] rounded-2xl border border-secondary/20"
+                  />
+                </>
+              )}
+              
               <motion.div
                 animate={{
                   rotate: hoveredIndex === index ? 360 : 0,
+                  scale: hoveredIndex === index ? 1.1 : 1,
                 }}
                 transition={{ duration: 0.8 }}
                 className={cn(
-                  "w-20 h-20 rounded-full bg-gradient-to-br",
+                  "w-20 h-20 rounded-full bg-gradient-to-br relative",
                   service.color,
                   "flex items-center justify-center mb-6 mx-auto"
                 )}
               >
-                <service.icon className={cn("w-10 h-10", service.iconColor)} />
+                {/* Pulsing glow */}
+                {hoveredIndex === index && (
+                  <motion.div
+                    animate={{
+                      scale: [1, 1.5, 1],
+                      opacity: [0.5, 0, 0.5],
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                    }}
+                    className="absolute inset-0 rounded-full bg-[#00ff88]"
+                  />
+                )}
+                <service.icon className={cn("w-10 h-10 relative z-10", service.iconColor)} />
               </motion.div>
               
               <h3 className="text-2xl font-bold mb-4 text-center">
