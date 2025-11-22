@@ -1,33 +1,39 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import gsap from 'gsap';
+import MagneticButton from '@/components/MagneticButton';
 
 const projects = [
   {
     name: "Zahra Ink",
     url: "https://zahra.ink",
     description: "موقع إبداعي متطور",
-    color: "#00ff00"
+    color: "#00ff00",
+    thumbnail: "Z"
   },
   {
     name: "Mohaaa",
     url: "https://mohaaa.netlify.app",
     description: "تطبيق ويب تفاعلي",
-    color: "#00dd00"
+    color: "#00dd00",
+    thumbnail: "M"
   },
   {
     name: "ElSharqawy",
     url: "https://elsharqawy.com",
     description: "منصة احترافية",
-    color: "#00cc00"
+    color: "#00cc00",
+    thumbnail: "E"
   },
   {
     name: "Magou Fashion",
     url: "https://magoufashion.store",
     description: "متجر أزياء عصري",
-    color: "#00bb00"
+    color: "#00bb00",
+    thumbnail: "MF"
   }
 ];
 
@@ -35,6 +41,24 @@ export default function Portfolio() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    if (isInView) {
+      cardsRef.current.forEach((card, index) => {
+        if (card) {
+          gsap.from(card, {
+            opacity: 0,
+            y: 100,
+            rotationX: -30,
+            duration: 0.8,
+            delay: index * 0.2,
+            ease: 'power3.out',
+          });
+        }
+      });
+    }
+  }, [isInView]);
 
   return (
     <section id="portfolio" ref={ref} className="relative py-32 px-6">
@@ -63,9 +87,7 @@ export default function Portfolio() {
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 50, rotateX: -20 }}
-              animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
+              ref={(el) => (cardsRef.current[index] = el)}
               onHoverStart={() => setHoveredIndex(index)}
               onHoverEnd={() => setHoveredIndex(null)}
               className="relative group perspective-1000"
@@ -205,19 +227,21 @@ export default function Portfolio() {
                     {project.description}
                   </p>
 
-                  <Button
-                    variant="outline"
-                    className="border-2 border-neon-green bg-transparent hover:bg-neon-green/10 text-neon-green transition-all group/btn"
-                    style={{
-                      boxShadow: '0 0 20px rgba(0, 255, 0, 0.3)'
-                    }}
-                    asChild
-                  >
-                    <a href={project.url} target="_blank" rel="noopener noreferrer">
-                      ACCESS HOLOGRAM
-                      <ExternalLink className="mr-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                    </a>
-                  </Button>
+                  <MagneticButton strength={0.15}>
+                    <Button
+                      variant="outline"
+                      className="border-2 border-neon-green bg-transparent hover:bg-neon-green/10 text-neon-green transition-all group/btn"
+                      style={{
+                        boxShadow: '0 0 20px rgba(0, 255, 0, 0.3)'
+                      }}
+                      asChild
+                    >
+                      <a href={project.url} target="_blank" rel="noopener noreferrer">
+                        ACCESS HOLOGRAM
+                        <ExternalLink className="mr-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                      </a>
+                    </Button>
+                  </MagneticButton>
                 </div>
 
                 {hoveredIndex === index && (

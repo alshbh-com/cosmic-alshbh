@@ -1,10 +1,31 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import MagneticButton from '@/components/MagneticButton';
 
 export default function Hero() {
   const [isEntering, setIsEntering] = useState(false);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    if (titleRef.current) {
+      gsap.from(titleRef.current, {
+        opacity: 0,
+        scale: 0.5,
+        duration: 1.5,
+        ease: 'power4.out',
+      });
+
+      gsap.to(titleRef.current, {
+        textShadow: '0 0 20px #00ff00, 0 0 40px #00ff00, 0 0 60px #00ff00',
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+      });
+    }
+  }, []);
 
   const handleEnterSpace = () => {
     setIsEntering(true);
@@ -60,6 +81,7 @@ export default function Hero() {
           transition={{ duration: 1.5, ease: "easeOut" }}
         >
           <motion.h1 
+            ref={titleRef}
             className="text-7xl md:text-9xl font-bold mb-8 relative"
             style={{
               textShadow: `
@@ -143,32 +165,34 @@ export default function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 1.2 }}
           >
-            <Button 
-              size="lg"
-              onClick={handleEnterSpace}
-              disabled={isEntering}
-              className="group relative overflow-hidden px-12 py-8 text-xl font-bold rounded-2xl border-4 border-neon-green bg-black hover:bg-neon-green/10 text-neon-green transition-all duration-300"
-              style={{
-                boxShadow: '0 0 30px #00ff00, inset 0 0 30px rgba(0, 255, 0, 0.2)',
-                animation: 'energy-pulse 2s ease-in-out infinite'
-              }}
-            >
-              <span className="relative z-10 flex items-center gap-3">
-                {isEntering ? 'ENTERING SPACE...' : 'ENTER SPACE'}
+            <MagneticButton strength={0.2}>
+              <Button 
+                size="lg"
+                onClick={handleEnterSpace}
+                disabled={isEntering}
+                className="group relative overflow-hidden px-12 py-8 text-xl font-bold rounded-2xl border-4 border-neon-green bg-black hover:bg-neon-green/10 text-neon-green transition-all duration-300"
+                style={{
+                  boxShadow: '0 0 30px #00ff00, inset 0 0 30px rgba(0, 255, 0, 0.2)',
+                  animation: 'energy-pulse 2s ease-in-out infinite'
+                }}
+              >
+                <span className="relative z-10 flex items-center gap-3">
+                  {isEntering ? 'ENTERING SPACE...' : 'ENTER SPACE'}
+                  <motion.div
+                    animate={{ x: [0, 10, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    <ArrowRight className="w-6 h-6" />
+                  </motion.div>
+                </span>
+                
                 <motion.div
-                  animate={{ x: [0, 10, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                >
-                  <ArrowRight className="w-6 h-6" />
-                </motion.div>
-              </span>
-              
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-neon-green/30 to-transparent"
-                animate={{ x: ['-100%', '100%'] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-              />
-            </Button>
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-neon-green/30 to-transparent"
+                  animate={{ x: ['-100%', '100%'] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                />
+              </Button>
+            </MagneticButton>
           </motion.div>
 
           <div className="absolute inset-0 pointer-events-none">

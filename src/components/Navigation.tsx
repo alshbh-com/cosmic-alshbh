@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
+import MagneticButton from '@/components/MagneticButton';
 
 const navItems = [
   { name: 'الرئيسية', href: '#' },
@@ -65,13 +66,15 @@ export default function Navigation() {
               </motion.a>
             ))}
             
-            <Button 
-              size="sm"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground pulse-glow"
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              ابدأ الآن
-            </Button>
+            <MagneticButton strength={0.2}>
+              <Button 
+                size="sm"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground pulse-glow"
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                ابدأ الآن
+              </Button>
+            </MagneticButton>
           </div>
 
           {/* Mobile Menu Button */}
