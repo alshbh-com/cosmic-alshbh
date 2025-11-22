@@ -2,8 +2,6 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Stars, OrbitControls } from '@react-three/drei';
 import { useRef, useMemo } from 'react';
 import * as THREE from 'three';
-import { EffectComposer, Bloom, Glitch } from '@react-three/postprocessing';
-import { GlitchMode } from 'postprocessing';
 
 // Warp Portal - Giant rotating energy gate
 function WarpPortal() {
@@ -348,22 +346,7 @@ export default function SpaceBackground() {
         <NebulaClouds />
         <OrbitingSpheres />
         
-        <EffectComposer>
-          <Bloom
-            intensity={2}
-            luminanceThreshold={0.2}
-            luminanceSmoothing={0.9}
-            mipmapBlur
-          />
-          <Glitch
-            delay={new THREE.Vector2(5, 10)}
-            duration={new THREE.Vector2(0.1, 0.3)}
-            strength={new THREE.Vector2(0.1, 0.2)}
-            mode={GlitchMode.SPORADIC}
-          />
-        </EffectComposer>
-        
-        <OrbitControls 
+        <OrbitControls
           enableZoom={false}
           enablePan={false}
           autoRotate
