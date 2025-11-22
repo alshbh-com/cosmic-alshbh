@@ -63,6 +63,8 @@ export default {
           pink: "hsl(var(--space-pink))",
           blue: "hsl(var(--space-blue))",
         },
+        "neon-green": "hsl(var(--neon-green))",
+        "dark-green": "hsl(var(--dark-green))",
       },
       backgroundImage: {
         'cosmic-gradient': 'linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 50%, hsl(var(--accent)) 100%)',
