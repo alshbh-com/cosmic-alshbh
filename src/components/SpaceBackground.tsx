@@ -356,9 +356,9 @@ export default function SpaceBackground() {
             mipmapBlur
           />
           <Glitch
-            delay={[5, 10]}
-            duration={[0.1, 0.3]}
-            strength={[0.1, 0.2]}
+            delay={new THREE.Vector2(5, 10)}
+            duration={new THREE.Vector2(0.1, 0.3)}
+            strength={new THREE.Vector2(0.1, 0.2)}
             mode={GlitchMode.SPORADIC}
           />
         </EffectComposer>
