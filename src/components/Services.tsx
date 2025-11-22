@@ -135,45 +135,45 @@ export default function Services() {
                 onHoverStart={() => setHoveredIndex(index)}
                 onHoverEnd={() => setHoveredIndex(null)}
               >
-                {/* Planet sphere */}
+                {/* Planet sphere - Smaller and lighter glow */}
                 <motion.div
-                  className="relative w-40 h-40"
+                  className="relative w-28 h-28"
                   animate={{
                     rotate: hoveredIndex === index ? 360 : 0,
-                    scale: hoveredIndex === index ? 1.3 : 1
+                    scale: hoveredIndex === index ? 1.2 : 1
                   }}
                   transition={{
                     rotate: { duration: 2, ease: "linear" },
                     scale: { duration: 0.3 }
                   }}
                 >
-                  {/* Planet glow */}
+                  {/* Planet glow - Lighter and softer */}
                   <motion.div
                     className="absolute inset-0 rounded-full"
                     style={{
-                      background: 'radial-gradient(circle at 30% 30%, #00ff00 0%, #004400 50%, #000000 100%)',
+                      background: 'radial-gradient(circle at 30% 30%, #00ff00 0%, #003300 50%, #000000 100%)',
                       boxShadow: hoveredIndex === index 
-                        ? '0 0 60px #00ff00, inset 0 0 40px rgba(0, 255, 0, 0.3)'
-                        : '0 0 30px #00ff00, inset 0 0 20px rgba(0, 255, 0, 0.2)'
+                        ? '0 0 40px #00ff00, inset 0 0 25px rgba(0, 255, 0, 0.25)'
+                        : '0 0 20px #00ff00, inset 0 0 15px rgba(0, 255, 0, 0.15)'
                     }}
                     animate={{
                       boxShadow: hoveredIndex === index 
                         ? [
-                            '0 0 60px #00ff00, inset 0 0 40px rgba(0, 255, 0, 0.3)',
-                            '0 0 100px #00ff00, inset 0 0 60px rgba(0, 255, 0, 0.5)',
-                            '0 0 60px #00ff00, inset 0 0 40px rgba(0, 255, 0, 0.3)'
+                            '0 0 40px #00ff00, inset 0 0 25px rgba(0, 255, 0, 0.25)',
+                            '0 0 60px #00ff00, inset 0 0 35px rgba(0, 255, 0, 0.35)',
+                            '0 0 40px #00ff00, inset 0 0 25px rgba(0, 255, 0, 0.25)'
                           ]
-                        : '0 0 30px #00ff00, inset 0 0 20px rgba(0, 255, 0, 0.2)'
+                        : '0 0 20px #00ff00, inset 0 0 15px rgba(0, 255, 0, 0.15)'
                     }}
                     transition={{ duration: 2, repeat: Infinity }}
                   />
 
-                  {/* Icon */}
+                  {/* Icon - Smaller */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <service.icon 
-                      className="w-16 h-16 text-neon-green relative z-10" 
+                      className="w-12 h-12 text-neon-green relative z-10" 
                       style={{
-                        filter: 'drop-shadow(0 0 20px #00ff00)'
+                        filter: 'drop-shadow(0 0 15px #00ff00)'
                       }}
                     />
                   </div>

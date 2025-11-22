@@ -124,7 +124,7 @@ function LightRays() {
 
 function FloatingParticles() {
   const particlesRef = useRef<THREE.Points>(null);
-  const particlesCount = 1500;
+  const particlesCount = 500; // Reduced from 1500 for better performance
 
   const { positions, colors, velocities } = useMemo(() => {
     const positions = new Float32Array(particlesCount * 3);
@@ -198,7 +198,7 @@ function FloatingParticles() {
 
 function MatrixRain() {
   const groupRef = useRef<THREE.Group>(null);
-  const linesCount = 60;
+  const linesCount = 30; // Reduced from 60 for better performance
 
   useFrame((state) => {
     if (groupRef.current) {
@@ -332,11 +332,11 @@ export default function SpaceBackground() {
         <Stars 
           radius={200} 
           depth={100} 
-          count={12000} 
-          factor={8} 
+          count={5000} 
+          factor={6} 
           saturation={0} 
           fade 
-          speed={2}
+          speed={1.5}
         />
         
         <WarpPortal />
