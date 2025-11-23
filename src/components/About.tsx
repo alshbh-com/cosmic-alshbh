@@ -34,11 +34,20 @@ export default function About() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 neon-text-purple">
+          <h2 
+            className="text-5xl md:text-7xl font-bold mb-6"
+            style={{
+              background: 'linear-gradient(135deg, #00d4ff 0%, #ffeb3b 50%, #00ff00 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              textShadow: '0 0 40px rgba(0, 212, 255, 0.5)'
+            }}
+          >
             من نحن؟
           </h2>
           
-          <div className="glass rounded-3xl p-12 mb-12 relative overflow-hidden border-2 border-[#00ff88]/30">
+          <div className="glass rounded-3xl p-12 mb-12 relative overflow-hidden border-2 border-neon-blue/30">
             <motion.div
               animate={{
                 rotate: [0, 360],
@@ -49,13 +58,20 @@ export default function About() {
                 repeat: Infinity,
                 ease: "linear"
               }}
-              className="absolute inset-0 bg-gradient-to-br from-[#00ff88]/20 via-primary/10 to-secondary/20 blur-3xl"
+              style={{
+                background: 'radial-gradient(circle, rgba(0, 212, 255, 0.2) 0%, rgba(255, 235, 59, 0.1) 50%, rgba(0, 255, 0, 0.2) 100%)',
+                filter: 'blur(60px)'
+              }}
+              className="absolute inset-0"
             />
             
-            {/* Holographic grid effect */}
+            {/* Holographic grid effect - Multi-color */}
             <div className="absolute inset-0 opacity-10" 
                  style={{
-                   backgroundImage: 'linear-gradient(#00ff88 1px, transparent 1px), linear-gradient(90deg, #00ff88 1px, transparent 1px)',
+                   backgroundImage: `
+                     linear-gradient(#00d4ff 1px, transparent 1px), 
+                     linear-gradient(90deg, #ffeb3b 1px, transparent 1px)
+                   `,
                    backgroundSize: '50px 50px'
                  }}
             />
@@ -73,7 +89,14 @@ export default function About() {
                 }}
               >
                 <h3 className="text-4xl md:text-5xl font-bold mb-6 text-center">
-                  <span className="bg-gradient-to-r from-[#00ff88] via-primary to-secondary bg-clip-text text-transparent">
+                  <span 
+                    style={{
+                      background: 'linear-gradient(135deg, #00d4ff 0%, #ffeb3b 50%, #00ff00 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                    }}
+                  >
                     شركة الشبح للبرمجة
                   </span>
                 </h3>
@@ -91,12 +114,12 @@ export default function About() {
                 className="text-2xl md:text-3xl font-light leading-relaxed mb-8 text-center"
               >
                 <motion.span 
-                  className="text-[#00ff88]"
+                  style={{ color: '#00d4ff' }}
                   animate={{
                     textShadow: [
-                      '0 0 10px #00ff88',
-                      '0 0 20px #00ff88',
-                      '0 0 10px #00ff88',
+                      '0 0 10px #00d4ff',
+                      '0 0 25px #00d4ff',
+                      '0 0 10px #00d4ff',
                     ],
                   }}
                   transition={{
@@ -104,11 +127,15 @@ export default function About() {
                     repeat: Infinity,
                   }}
                 >
-                  نحن فريق Alshbh
+                  نحن فريق ALSHBH
                 </motion.span>
                 {' '}
+                <span style={{ color: '#ffeb3b' }}>
+                  - شركة تشبه المستقبل
+                </span>
+                {' '}
                 <span className="text-foreground">
-                  - شركة الشبح للبرمجة، نبني مواقع وتطبيقات خارج حدود العادي... ندمج التصميم، الذكاء الاصطناعي، والتحريك لصناعة تجارب رقمية فضائية فريدة من نوعها
+                  نبني مواقع وتطبيقات خارج حدود العادي، ندمج التصميم، الذكاء الاصطناعي، والتحريك ثلاثي الأبعاد لصناعة تجارب رقمية Cyberpunk فريدة من نوعها
                 </span>
               </motion.div>
               

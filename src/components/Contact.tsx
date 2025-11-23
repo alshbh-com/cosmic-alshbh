@@ -24,14 +24,17 @@ export default function Contact() {
           <h2 
             className="text-5xl md:text-7xl font-bold mb-6"
             style={{
-              color: '#00ff00',
-              textShadow: '0 0 20px #00ff00, 0 0 40px #00ff00, 0 0 60px #00ff00'
+              background: 'linear-gradient(135deg, #00d4ff 0%, #ffeb3b 50%, #00ff00 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              textShadow: '0 0 40px rgba(0, 212, 255, 0.6)'
             }}
           >
-            CONTACT PORTAL
+            تواصل معنا
           </h2>
-          <p className="text-xl text-neon-green/80">
-            افتح بوابة الاتصال وتواصل معنا عبر الأبعاد الرقمية
+          <p className="text-xl" style={{ color: '#00d4ff' }}>
+            افتح بوابة الاتصال عبر الأبعاد الرقمية
           </p>
         </motion.div>
 
@@ -105,16 +108,18 @@ export default function Contact() {
             >
               <Button
                 size="lg"
-                className="relative px-16 py-12 text-2xl font-bold rounded-full border-4 border-neon-green bg-black hover:bg-neon-green/20 text-neon-green overflow-hidden group"
+                className="relative px-16 py-12 text-2xl font-bold rounded-full border-4 bg-black overflow-hidden group"
                 style={{
-                  boxShadow: '0 0 60px #00ff00, inset 0 0 40px rgba(0, 255, 0, 0.2)',
-                  animation: 'energy-pulse 2s ease-in-out infinite'
+                  borderImage: 'linear-gradient(135deg, #00d4ff, #ffeb3b, #00ff00) 1',
+                  boxShadow: '0 0 60px #00d4ff, inset 0 0 40px rgba(0, 212, 255, 0.2)',
+                  animation: 'energy-pulse 3s ease-in-out infinite',
+                  color: '#00d4ff'
                 }}
                 asChild
               >
                 <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="w-10 h-10 ml-4" />
-                  <span className="relative z-10">OPEN CHANNEL</span>
+                  <span className="relative z-10">تواصل عبر واتساب</span>
                   
                   <motion.div
                     className="absolute inset-0 rounded-full"
@@ -127,24 +132,25 @@ export default function Contact() {
                       repeat: Infinity
                     }}
                     style={{
-                      background: 'radial-gradient(circle, #00ff00 0%, transparent 70%)'
+                      background: 'radial-gradient(circle, #00d4ff 0%, transparent 70%)'
                     }}
                   />
                 </a>
               </Button>
 
               <motion.div
-                className="absolute -top-8 left-1/2 -translate-x-1/2 text-neon-green text-sm font-bold tracking-widest"
+                className="absolute -top-8 left-1/2 -translate-x-1/2 text-sm font-bold tracking-widest"
                 animate={{
                   opacity: [0.5, 1, 0.5],
-                  y: [0, -5, 0]
+                  y: [0, -5, 0],
+                  color: ['#00d4ff', '#ffeb3b', '#00ff00', '#00d4ff']
                 }}
                 transition={{
-                  duration: 2,
+                  duration: 3,
                   repeat: Infinity
                 }}
                 style={{
-                  textShadow: '0 0 10px #00ff00'
+                  textShadow: '0 0 15px currentColor'
                 }}
               >
                 ↓ ACTIVE ↓
@@ -160,58 +166,66 @@ export default function Contact() {
           >
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="p-8 rounded-2xl backdrop-blur-md border-2 border-neon-green/30"
+              className="p-8 rounded-2xl backdrop-blur-md border-2"
               style={{
                 background: 'rgba(0, 0, 0, 0.7)',
-                boxShadow: '0 0 30px rgba(0, 255, 0, 0.2)'
+                borderColor: '#00d4ff',
+                boxShadow: '0 0 30px rgba(0, 212, 255, 0.3)'
               }}
             >
               <MessageCircle 
-                className="w-12 h-12 text-neon-green mb-4"
-                style={{ filter: 'drop-shadow(0 0 10px #00ff00)' }}
+                className="w-12 h-12 mb-4"
+                style={{ 
+                  color: '#00d4ff',
+                  filter: 'drop-shadow(0 0 10px #00d4ff)' 
+                }}
               />
               <h3 
                 className="text-2xl font-bold mb-2"
                 style={{
-                  color: '#00ff00',
-                  textShadow: '0 0 10px #00ff00'
+                  color: '#00d4ff',
+                  textShadow: '0 0 10px #00d4ff'
                 }}
               >
                 WhatsApp
               </h3>
-              <p className="text-neon-green/70 mb-4 font-mono">
+              <p className="mb-4 font-mono" style={{ color: '#ffeb3b' }}>
                 +{whatsappNumber}
               </p>
-              <p className="text-neon-green/60 text-sm">
+              <p className="text-sm" style={{ color: '#00ff00' }}>
                 تواصل معنا مباشرة عبر واتساب
               </p>
             </motion.div>
 
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="p-8 rounded-2xl backdrop-blur-md border-2 border-neon-green/30"
+              className="p-8 rounded-2xl backdrop-blur-md border-2"
               style={{
                 background: 'rgba(0, 0, 0, 0.7)',
-                boxShadow: '0 0 30px rgba(0, 255, 0, 0.2)'
+                borderColor: '#ffeb3b',
+                boxShadow: '0 0 30px rgba(255, 235, 59, 0.3)'
               }}
             >
               <Mail 
-                className="w-12 h-12 text-neon-green mb-4"
-                style={{ filter: 'drop-shadow(0 0 10px #00ff00)' }}
+                className="w-12 h-12 mb-4"
+                style={{ 
+                  color: '#ffeb3b',
+                  filter: 'drop-shadow(0 0 10px #ffeb3b)' 
+                }}
               />
               <h3 
                 className="text-2xl font-bold mb-2"
                 style={{
-                  color: '#00ff00',
-                  textShadow: '0 0 10px #00ff00'
+                  color: '#ffeb3b',
+                  textShadow: '0 0 10px #ffeb3b'
                 }}
               >
                 Email
               </h3>
-              <p className="text-neon-green/70 mb-4 font-mono">
+              <p className="mb-4 font-mono" style={{ color: '#00ff00' }}>
                 info@alshbh.space
               </p>
-              <p className="text-neon-green/60 text-sm">
+              <p className="text-sm" style={{ color: '#00d4ff' }}>
                 راسلنا عبر البريد الإلكتروني
               </p>
             </motion.div>
@@ -221,11 +235,12 @@ export default function Contact() {
             {[...Array(20)].map((_, i) => (
               <motion.div
                 key={i}
-                className="absolute w-1 bg-neon-green/30"
+                className="absolute w-1"
                 style={{
                   height: '20px',
                   left: `${Math.random() * 100}%`,
-                  boxShadow: '0 0 5px #00ff00'
+                  background: i % 3 === 0 ? '#00d4ff' : i % 3 === 1 ? '#ffeb3b' : '#00ff00',
+                  boxShadow: `0 0 5px ${i % 3 === 0 ? '#00d4ff' : i % 3 === 1 ? '#ffeb3b' : '#00ff00'}`
                 }}
                 animate={{
                   y: [-50, 800],
@@ -251,14 +266,16 @@ export default function Contact() {
           <p 
             className="text-2xl font-bold mb-2"
             style={{
-              color: '#00ff00',
-              textShadow: '0 0 15px #00ff00'
+              background: 'linear-gradient(90deg, #00d4ff, #ffeb3b, #00ff00)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
             }}
           >
-            شركة الشبح للبرمجة
+            شركة الشبح للبرمجة - ALSHBH
           </p>
-          <p className="text-neon-green/60">
-            ALSHBH - Beyond Coding, Beyond Reality
+          <p style={{ color: '#00d4ff' }}>
+            Beyond Coding, Beyond Reality
           </p>
         </motion.div>
       </div>
