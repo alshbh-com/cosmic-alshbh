@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import SpaceBackground from '@/components/SpaceBackground';
+import CyberpunkBackground from '@/components/CyberpunkBackground';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
@@ -18,7 +18,7 @@ const Index = () => {
       {showIntro && <IntroScreen onComplete={() => setShowIntro(false)} />}
       
       <div className="relative min-h-screen">
-        <SpaceBackground />
+        <CyberpunkBackground />
         <Navigation />
         <WhatsAppButton />
         <main>

@@ -10,29 +10,29 @@ const projects = [
   {
     name: "Zahra Ink",
     url: "https://zahra.ink",
-    description: "موقع إبداعي متطور",
-    color: "#00ff00",
+    description: "موقع إبداعي متطور بتصميم فني فريد",
+    color: "#00d4ff",
     thumbnail: "Z"
   },
   {
     name: "Mohaaa",
     url: "https://mohaaa.netlify.app",
-    description: "تطبيق ويب تفاعلي",
-    color: "#00dd00",
+    description: "تطبيق ويب تفاعلي عالي الأداء",
+    color: "#ffeb3b",
     thumbnail: "M"
   },
   {
     name: "ElSharqawy",
     url: "https://elsharqawy.com",
-    description: "منصة احترافية",
-    color: "#00cc00",
+    description: "منصة احترافية متكاملة",
+    color: "#00ff00",
     thumbnail: "E"
   },
   {
     name: "Magou Fashion",
     url: "https://magoufashion.store",
-    description: "متجر أزياء عصري",
-    color: "#00bb00",
+    description: "متجر أزياء عصري بتجربة تسوق مميزة",
+    color: "#ff00ff",
     thumbnail: "MF"
   }
 ];
@@ -72,13 +72,16 @@ export default function Portfolio() {
           <h2 
             className="text-5xl md:text-7xl font-bold mb-6"
             style={{
-              color: '#00ff00',
-              textShadow: '0 0 20px #00ff00, 0 0 40px #00ff00, 0 0 60px #00ff00'
+              background: 'linear-gradient(135deg, #00d4ff 0%, #ffeb3b 50%, #00ff00 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              textShadow: '0 0 40px rgba(0, 212, 255, 0.6)'
             }}
           >
             HOLOGRAPHIC GALLERY
           </h2>
-          <p className="text-xl text-neon-green/80 max-w-3xl mx-auto">
+          <p className="text-xl max-w-3xl mx-auto" style={{ color: '#00d4ff' }}>
             مشاريع نفخر بإنجازها - معروضة في شاشات هولوغرام ثلاثية الأبعاد
           </p>
         </motion.div>
@@ -230,9 +233,11 @@ export default function Portfolio() {
                   <MagneticButton strength={0.15}>
                     <Button
                       variant="outline"
-                      className="border-2 border-neon-green bg-transparent hover:bg-neon-green/10 text-neon-green transition-all group/btn"
+                      className="border-2 bg-transparent transition-all group/btn"
                       style={{
-                        boxShadow: '0 0 20px rgba(0, 255, 0, 0.3)'
+                        borderColor: project.color,
+                        color: project.color,
+                        boxShadow: `0 0 20px ${project.color}40`
                       }}
                       asChild
                     >
